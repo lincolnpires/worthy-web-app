@@ -3,19 +3,20 @@
   "tasks": [
     {
       "type": "func",
+      "label": "Run API",
       "command": "host start",
       "problemMatcher": "$func-node-watch",
       "isBackground": true,
-      "dependsOn": "npm build",
+      "dependsOn": "Build API",
       "options": {
         "cwd": "${workspaceFolder}/Api"
       }
     },
     {
       "type": "shell",
-      "label": "npm build",
+      "label": "Build API",
       "command": "npm run build",
-      "dependsOn": "npm install",
+      "dependsOn": "Install API deps",
       "problemMatcher": "$tsc",
       "options": {
         "cwd": "${workspaceFolder}/Api"
@@ -23,7 +24,7 @@
     },
     {
       "type": "shell",
-      "label": "npm install",
+      "label": "Install API deps",
       "command": "npm install",
       "options": {
         "cwd": "${workspaceFolder}/Api"
@@ -38,6 +39,24 @@
       "options": {
         "cwd": "${workspaceFolder}/Api"
       }
+    },
+    {
+      "type": "shell",
+      "label": "Build Client",
+      "command": "dotnet build",
+      "options": {
+        "cwd": "${workspaceFolder}/Client"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "Run Client",
+      "dependsOn": "Build Client",
+      "command": "dotnet run --watch",
+      "options": {
+        "cwd": "${workspaceFolder}/Client"
+      },
+      "problemMatcher": []
     }
   ]
 }

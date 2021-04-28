@@ -2,11 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to Node Functions",
+      "name": "Launch API",
       "type": "node",
       "request": "attach",
       "port": 9229,
-      "preLaunchTask": "func: host start"
+      "preLaunchTask": "Run API"
+    },
+    {
+      "name": "Launch Client",
+      "type": "blazorwasm",
+      "cwd": "${workspaceFolder}/Client",
+      "request": "launch"
     }
   ]
 }
